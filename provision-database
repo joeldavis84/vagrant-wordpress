@@ -2,8 +2,8 @@
 
 rootPassword="boop"
 
-script --return -c "apt-get -qq update" /dev/null
-script --return -c "apt-get -qq install -y mariadb-server mariadb-client" /dev/null
+apt-get -qq update
+apt-get -qq install -y mariadb-server mariadb-client
 
   ## Listen on all interfaces
 sed -i '/^bind-address/d' /etc/mysql/mariadb.conf.d/50-server.cnf

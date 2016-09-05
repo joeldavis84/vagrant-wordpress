@@ -8,8 +8,8 @@
 
 
   ## Install System Services
-script --return -c "apt-get -qq update" /dev/null
-script --return -c "apt-get -qq install -y apache2 php-mysql libapache2-mod-php" /dev/null
+apt-get -qq update
+apt-get -qq install -y apache2 php-mysql libapache2-mod-php
 
   ## Instantiate WordPress From Custom Parameters
 cd /var/www/html
