@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rootPassword="boop"
+
+script --return -c "apt-get -qq update" /dev/null
+script --return -c "apt-get -qq install -y mariadb-server mariadb-client" /dev/null
+
+  ## Listen on all interfaces
+sed -i '/^bind-address/d' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+  ## Restart Service and enable it at reboot
+systemctl restart mysql
+/lib/systemd/systemd-sysv-install enable mysql
+
+echo -e "\\nY\\n${rootPassword}\\n${rootPassword}\\nY\\nY\\nn\\nY\\n" | mysql_secure_installation
+
+  ## Import Default Site Data
+mysql -pboop < /vagrant/create-database.sql
+mysql -pboop < /vagrant/create-tables.sql

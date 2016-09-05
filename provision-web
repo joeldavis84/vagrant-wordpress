@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#######
+##
+## Objective: Provision a new wordpress website with a separate VM for the database.
+##
+#######
+
+
+  ## Install System Services
+script --return -c "apt-get -qq update" /dev/null
+script --return -c "apt-get -qq install -y apache2 php-mysql libapache2-mod-php" /dev/null
+
+  ## Instantiate WordPress From Custom Parameters
+cd /var/www/html
+rm -f index.html
+tar xzpf /vagrant/wordpress-latest.tar.gz
+mv wordpress/* .
+rm -rf wordpress
+cp /vagrant/wp-config.php .
+
+  ## Install and Enable System Services
+systemctl restart apache2
+systemctl enable apache2 2>/dev/null
