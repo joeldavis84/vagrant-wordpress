@@ -1,5 +1,3 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
 
 Vagrant.configure('2') do |config|
 
@@ -24,3 +22,5 @@ Vagrant.configure('2') do |config|
   end
 
 end
+
+# vim: set ft=ruby :

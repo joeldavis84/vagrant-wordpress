@@ -1,9 +1,7 @@
 #!/bin/bash
 
 #######
-##
-## Objective: Provision a new wordpress website with a separate VM for the database.
-##
+## Provision a new wordpress website with a separate VM for the database.
 #######
 
 

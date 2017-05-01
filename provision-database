@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#######
+## Provision a new database server. 
+#######
+
 rootPassword="boop"
 
 apt-get -qq update
@@ -15,5 +19,5 @@ systemctl restart mysql
 echo -e "\\nY\\n${rootPassword}\\n${rootPassword}\\nY\\nY\\nn\\nY\\n" | mysql_secure_installation
 
   ## Import Default Site Data
-mysql -pboop < /vagrant/create-database.sql
-mysql -pboop < /vagrant/create-tables.sql
+mysql -p$rootPassword < /vagrant/create-database.sql
+mysql -p$rootPassword < /vagrant/create-tables.sql
