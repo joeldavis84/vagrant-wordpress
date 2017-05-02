@@ -17,6 +17,9 @@ mv wordpress/* .
 rm -rf wordpress
 cp /vagrant/wp-config.php .
 
+  ## Correct File Ownership
+chown -R www-data:www-data /var/www/html
+
   ## Install and Enable System Services
 systemctl restart apache2
 systemctl enable apache2 2>/dev/null
